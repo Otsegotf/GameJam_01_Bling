@@ -1,8 +1,32 @@
 fileFormatVersion: 2
-guid: 708fbc37f10ea794ead464176c0f9e46
+guid: 9510c2c641e3cc34483eaeee8a2df747
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 2582661845352665306
+    second: Bob|Move
+  - first:
+      74: -2375360984417422461
+    second: Bob|Move.001
+  - first:
+      74: -8618849898924082150
+    second: Bob|Move.002
+  - first:
+      74: -9089342723065457695
+    second: Bob|Move.003
+  - first:
+      74: 4808668307136287065
+    second: Bob|Move.004
+  - first:
+      74: -4880790126119362787
+    second: Bob|Move.005
+  - first:
+      74: -8431313013841370972
+    second: Bob|Move.006
+  - first:
+      74: 2353817258909989158
+    second: Bob|Move.007
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -30,7 +54,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Bob|Move
+      takeName: Bob|Move
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
