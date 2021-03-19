@@ -9,13 +9,13 @@ public class Tile : MonoBehaviour
 
     public Vector2Int TileId;
 
-    public GameObject N;
+    public StateToggler N;
 
-    public GameObject S;
+    public StateToggler S;
 
-    public GameObject E;
+    public StateToggler E;
 
-    public GameObject W;
+    public StateToggler W;
 
     public GameObject WallW;
 
@@ -52,10 +52,10 @@ public class Tile : MonoBehaviour
 
     public void SetState(TileStates state)
     {
-        E.SetActive(State.HasFlag(TileStates.E));
-        S.SetActive(State.HasFlag(TileStates.S));
-        N.SetActive(State.HasFlag(TileStates.N));
-        W.SetActive(State.HasFlag(TileStates.W));
+        E.SetState(State.HasFlag(TileStates.E));
+        S.SetState(State.HasFlag(TileStates.S));
+        N.SetState(State.HasFlag(TileStates.N));
+        W.SetState(State.HasFlag(TileStates.W));
     }
 }
 [Flags]

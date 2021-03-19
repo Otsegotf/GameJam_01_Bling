@@ -20,16 +20,19 @@ public class TileMap : MonoBehaviour
 
     public int MaxBreaks = 1;
 
+    public static TileMap Instance;
+
     private float _curCd = 5;
 
     private Coroutine GeneratorRoutine;
     // Start is called before the first frame update
     void Start()
     {
+        Instance = this;
         _curCd = Cooldown;
         if (Seed == 0)
         {
-            Seed = Random.Range(0, 99999999);            
+            Seed = Random.Range(0, 99999999);
         }
         GenerateMap();
     }
