@@ -1,3 +1,4 @@
+using GJgame;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -52,10 +53,25 @@ public class TileMap : MonoBehaviour
                 newTile.WallW.SetActive(i == 0);
                 newTile.WallE.SetActive(i == Size.x - 1);
                 newTile.WallN.SetActive(z == Size.y - 1);
-                newTile.WallS.SetActive(z == 0);
+                if (z == 0 && i <= 1)
+                {
+                    newTile.State &= ~TileStates.S;
+                }
+                newTile.WallS.SetActive(z == 0 && i > 1);
+                yield return null;
             }
         }
         yield return StartCoroutine(CheckConnectivity(_tiles[0, 0]));
+        for (int i = 0; i < Size.x; i++)
+        {
+            for (int z = 0; z < Size.y; z++)
+            {
+                var typeTest = Random.Range(0, 7);
+                var typedType = (ShopItemType)(1 << typeTest);
+                _tiles[i, z].UpdateAisleState(typedType);
+                yield return null;
+            }
+        }
     }
     private IEnumerator CheckConnectivity(Tile startPoint)
     {

@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010242993566830131}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.75, y: 0, z: 0.25}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1500678156253497250}
@@ -85,10 +85,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Agent: {fileID: 2010242993566830130}
+  TargetAisle: {fileID: 0}
   CD: 10
-  MovementBounds:
-    m_Center: {x: 20, y: 0, z: 20}
-    m_Extent: {x: 20, y: 0, z: 20}
   Target: {x: 0, y: 0, z: 0}
 --- !u!1001 &2010242994748459236
 PrefabInstance:
