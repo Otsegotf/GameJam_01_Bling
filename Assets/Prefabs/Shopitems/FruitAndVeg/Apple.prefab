@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1825567002517714916
+--- !u!1 &4865192066631055545
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8820681884467172240}
-  - component: {fileID: 6867351095109075605}
-  - component: {fileID: 7563593436417227348}
+  - component: {fileID: 8929769756368006568}
+  - component: {fileID: 8711428110532443290}
+  - component: {fileID: 2239851970296497426}
   m_Layer: 0
-  m_Name: banana
+  m_Name: apple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8820681884467172240
+--- !u!4 &8929769756368006568
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1825567002517714916}
+  m_GameObject: {fileID: 4865192066631055545}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
@@ -32,21 +32,21 @@ Transform:
   m_Father: {fileID: 4398277763309718746}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6867351095109075605
+--- !u!33 &8711428110532443290
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1825567002517714916}
-  m_Mesh: {fileID: -8457624670379154836, guid: 55694dc02739ac6439352e5cda53fa0c, type: 3}
---- !u!23 &7563593436417227348
+  m_GameObject: {fileID: 4865192066631055545}
+  m_Mesh: {fileID: -3645058858012553506, guid: 55694dc02739ac6439352e5cda53fa0c, type: 3}
+--- !u!23 &2239851970296497426
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1825567002517714916}
+  m_GameObject: {fileID: 4865192066631055545}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -94,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4306990846486033848, guid: a4a17b1b5781eba4381b997beb3b781e, type: 3}
       propertyPath: m_Name
-      value: Banana
+      value: Apple
       objectReference: {fileID: 0}
     - target: {fileID: 4639854982909892303, guid: a4a17b1b5781eba4381b997beb3b781e, type: 3}
       propertyPath: m_RootOrder

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1825567002517714916
+--- !u!1 &7872466325203429850
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8820681884467172240}
-  - component: {fileID: 6867351095109075605}
-  - component: {fileID: 7563593436417227348}
+  - component: {fileID: 6937462508482424128}
+  - component: {fileID: 5488080720190202208}
+  - component: {fileID: 6739933659814616525}
   m_Layer: 0
-  m_Name: banana
+  m_Name: fish2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8820681884467172240
+--- !u!4 &6937462508482424128
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1825567002517714916}
+  m_GameObject: {fileID: 7872466325203429850}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
@@ -32,21 +32,21 @@ Transform:
   m_Father: {fileID: 4398277763309718746}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6867351095109075605
+--- !u!33 &5488080720190202208
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1825567002517714916}
-  m_Mesh: {fileID: -8457624670379154836, guid: 55694dc02739ac6439352e5cda53fa0c, type: 3}
---- !u!23 &7563593436417227348
+  m_GameObject: {fileID: 7872466325203429850}
+  m_Mesh: {fileID: 3751885671953355850, guid: 55694dc02739ac6439352e5cda53fa0c, type: 3}
+--- !u!23 &6739933659814616525
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1825567002517714916}
+  m_GameObject: {fileID: 7872466325203429850}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -90,11 +90,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3923493931958696690, guid: a4a17b1b5781eba4381b997beb3b781e, type: 3}
       propertyPath: ItemType
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4306990846486033848, guid: a4a17b1b5781eba4381b997beb3b781e, type: 3}
       propertyPath: m_Name
-      value: Banana
+      value: Fish2
       objectReference: {fileID: 0}
     - target: {fileID: 4639854982909892303, guid: a4a17b1b5781eba4381b997beb3b781e, type: 3}
       propertyPath: m_RootOrder
