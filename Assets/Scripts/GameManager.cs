@@ -15,15 +15,21 @@ namespace GJgame
 
         public Movement Player;
 
+        public CartMovement Cart;
+
         public AisleConstructor[] Aisles;
 
         public JayAI JayPrefab;
 
         public Movement PlayerPrefab;
 
+        public CartMovement CartPrefab;
+
         public Transform PlayerSpawnPoint;
 
         public Transform JaySpawnPoint;
+
+        public Transform CartSpawnPoint;
 
         public CinemachineVirtualCamera PlayerCamera;
 
@@ -59,10 +65,13 @@ namespace GJgame
                 GameObject.Destroy(Jay.gameObject);
             if (Player)
                 GameObject.Destroy(Player.gameObject);
+            if (Cart)
+                GameObject.Destroy(Cart.gameObject);
             yield return LevelMap.GenerateMap();
             Aisles = LevelMap.Target.GetComponentsInChildren<AisleConstructor>();
             Jay = GameObject.Instantiate(JayPrefab, JaySpawnPoint);
             Player = GameObject.Instantiate(PlayerPrefab, PlayerSpawnPoint);
+            Cart = GameObject.Instantiate(CartPrefab, CartSpawnPoint);
             Player.ControlCamera = PlayerCamera.transform;
             PlayerCamera.Follow = Player.transform;
             PlayerCamera.LookAt = Player.transform;
