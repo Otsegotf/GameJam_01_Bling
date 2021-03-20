@@ -17,9 +17,16 @@ public class AisleConstructor : MonoBehaviour
 
     public ShopItem ItemPrefab;
 
+    public MeshRenderer[] MarksRenderers;
+
     public ShopItemType CurrentPreferedType;
     public void SetAisleState(bool isAisle, bool leftCorner, bool rightCorner, ShopItemType prefferedItemType)
     {
+        var color = GameManager.Instance.LabelLibrary.GetBlock(prefferedItemType);
+        for (int i = 0; i < MarksRenderers.Length; i++)
+        {
+            MarksRenderers[i].SetPropertyBlock(color);
+        }
         CurrentPreferedType = prefferedItemType;
         gameObject.SetActive(isAisle);
         var isCorner = leftCorner || rightCorner;

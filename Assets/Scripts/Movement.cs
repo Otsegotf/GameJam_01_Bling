@@ -69,6 +69,20 @@ namespace GJgame
 
         private void Activate_performed(InputAction.CallbackContext obj)
         {
+            var objects = Physics.OverlapSphere(Hands.position, 0.3f);
+            var collected = new List<IPickupAble>();
+            for (int i = 0; i < objects.Length; i++)
+            {
+                var cart = objects[i].GetComponentInParent<CartMovement>();
+                if (cart && CarriedItem == null)
+                    _targetPickup = cart;
+                var jay = objects[i].GetComponentInParent<JayAI>();
+                if(jay && !(_targetPickup is CartMovement))
+                {
+                    _targetPickup = jay;
+                }
+
+            }
             if (_targetPickup != null)
             {
                 var comp = (_targetPickup as Component);

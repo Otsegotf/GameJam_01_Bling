@@ -516,7 +516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 431052514}
   m_Layer: 0
-  m_Name: JaySpawnPoint
+  m_Name: BobSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -798,7 +798,7 @@ MonoBehaviour:
   PlayerCamera: {fileID: 321078535}
   ItemLibrary: {fileID: 11400000, guid: 52581769eb2cbbc4eabedc0fce23e91a, type: 2}
   LabelLibrary: {fileID: 11400000, guid: e971c81022ff3b74da3b035b1c4b4449, type: 2}
-  Difficulty: 0
+  Difficulty: 1
   TriggerForEnd: {fileID: 1646771481}
 --- !u!114 &836291556
 MonoBehaviour:
@@ -1532,7 +1532,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2010242993566830131, guid: 646c751316318224faec7328f91ac7e1, type: 3}
       propertyPath: m_Name
-      value: Jay
+      value: Bob
       objectReference: {fileID: 0}
     - target: {fileID: 2010242993566830140, guid: 646c751316318224faec7328f91ac7e1, type: 3}
       propertyPath: m_RootOrder

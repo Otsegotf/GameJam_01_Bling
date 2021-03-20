@@ -68,6 +68,18 @@ PrefabInstance:
       propertyPath: ItemType
       value: 64
       objectReference: {fileID: 0}
+    - target: {fileID: 1910429629486759574, guid: f4f36ac5d0557e14ca0e007a865f8889, type: 3}
+      propertyPath: TypeColor.b
+      value: 0.5093005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1910429629486759574, guid: f4f36ac5d0557e14ca0e007a865f8889, type: 3}
+      propertyPath: TypeColor.g
+      value: 0.7997049
+      objectReference: {fileID: 0}
+    - target: {fileID: 1910429629486759574, guid: f4f36ac5d0557e14ca0e007a865f8889, type: 3}
+      propertyPath: TypeColor.r
+      value: 0.990566
+      objectReference: {fileID: 0}
     - target: {fileID: 5627421975731952380, guid: f4f36ac5d0557e14ca0e007a865f8889, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -114,7 +126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8566677203596888271, guid: f4f36ac5d0557e14ca0e007a865f8889, type: 3}
       propertyPath: m_Name
-      value: Drinks
+      value: DrinksLabel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4f36ac5d0557e14ca0e007a865f8889, type: 3}
