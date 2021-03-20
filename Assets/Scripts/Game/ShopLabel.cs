@@ -7,5 +7,7 @@ namespace GJgame
     public class ShopLabel : MonoBehaviour
     {
         public ShopItemType ItemType;
+
+        public Color TypeColor = Color.white;
     }
 }
