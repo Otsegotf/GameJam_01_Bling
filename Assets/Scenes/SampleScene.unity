@@ -799,6 +799,7 @@ MonoBehaviour:
   ItemLibrary: {fileID: 11400000, guid: 52581769eb2cbbc4eabedc0fce23e91a, type: 2}
   LabelLibrary: {fileID: 11400000, guid: e971c81022ff3b74da3b035b1c4b4449, type: 2}
   Difficulty: 0
+  TriggerForEnd: {fileID: 1646771481}
 --- !u!114 &836291556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1066,7 +1067,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 836291555}
         m_TargetAssemblyTypeName: GJgame.GameManager, Assembly-CSharp
-        m_MethodName: Restart
+        m_MethodName: TriggerLevelEnd
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
