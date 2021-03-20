@@ -168,14 +168,22 @@ namespace GJgame
                     ""id"": ""531b07e2-e35b-4386-beb8-bdde6b999889"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Detach"",
+                    ""type"": ""Button"",
+                    ""id"": ""0fc69a46-c900-4042-ad9c-e51902417657"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""d583810a-7011-4f0a-9b48-0c5bde3d6da1"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Default"",
@@ -186,11 +194,33 @@ namespace GJgame
                 {
                     ""name"": """",
                     ""id"": ""ff798777-ba43-4278-89e1-bfafda52c739"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Default"",
                     ""action"": ""Activate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""059160c7-7036-4be1-a2d4-c58b611f4db5"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Default"",
+                    ""action"": ""Detach"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b3cc7aa8-1599-4151-9f47-9eeb085ba668"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Default"",
+                    ""action"": ""Detach"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -213,6 +243,7 @@ namespace GJgame
             // Interactions
             m_Interactions = asset.FindActionMap("Interactions", throwIfNotFound: true);
             m_Interactions_Activate = m_Interactions.FindAction("Activate", throwIfNotFound: true);
+            m_Interactions_Detach = m_Interactions.FindAction("Detach", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -312,11 +343,13 @@ namespace GJgame
         private readonly InputActionMap m_Interactions;
         private IInteractionsActions m_InteractionsActionsCallbackInterface;
         private readonly InputAction m_Interactions_Activate;
+        private readonly InputAction m_Interactions_Detach;
         public struct InteractionsActions
         {
             private @DefaultMovement m_Wrapper;
             public InteractionsActions(@DefaultMovement wrapper) { m_Wrapper = wrapper; }
             public InputAction @Activate => m_Wrapper.m_Interactions_Activate;
+            public InputAction @Detach => m_Wrapper.m_Interactions_Detach;
             public InputActionMap Get() { return m_Wrapper.m_Interactions; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -329,6 +362,9 @@ namespace GJgame
                     @Activate.started -= m_Wrapper.m_InteractionsActionsCallbackInterface.OnActivate;
                     @Activate.performed -= m_Wrapper.m_InteractionsActionsCallbackInterface.OnActivate;
                     @Activate.canceled -= m_Wrapper.m_InteractionsActionsCallbackInterface.OnActivate;
+                    @Detach.started -= m_Wrapper.m_InteractionsActionsCallbackInterface.OnDetach;
+                    @Detach.performed -= m_Wrapper.m_InteractionsActionsCallbackInterface.OnDetach;
+                    @Detach.canceled -= m_Wrapper.m_InteractionsActionsCallbackInterface.OnDetach;
                 }
                 m_Wrapper.m_InteractionsActionsCallbackInterface = instance;
                 if (instance != null)
@@ -336,6 +372,9 @@ namespace GJgame
                     @Activate.started += instance.OnActivate;
                     @Activate.performed += instance.OnActivate;
                     @Activate.canceled += instance.OnActivate;
+                    @Detach.started += instance.OnDetach;
+                    @Detach.performed += instance.OnDetach;
+                    @Detach.canceled += instance.OnDetach;
                 }
             }
         }
@@ -358,6 +397,7 @@ namespace GJgame
         public interface IInteractionsActions
         {
             void OnActivate(InputAction.CallbackContext context);
+            void OnDetach(InputAction.CallbackContext context);
         }
     }
 }
