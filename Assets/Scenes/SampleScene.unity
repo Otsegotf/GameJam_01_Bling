@@ -798,7 +798,7 @@ MonoBehaviour:
   PlayerCamera: {fileID: 321078535}
   ItemLibrary: {fileID: 11400000, guid: 52581769eb2cbbc4eabedc0fce23e91a, type: 2}
   LabelLibrary: {fileID: 11400000, guid: e971c81022ff3b74da3b035b1c4b4449, type: 2}
-  Difficulty: 0
+  Difficulty: 3
   TriggerForEnd: {fileID: 1646771481}
 --- !u!114 &836291556
 MonoBehaviour:
