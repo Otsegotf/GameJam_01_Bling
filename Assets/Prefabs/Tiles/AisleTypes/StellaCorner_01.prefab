@@ -194,6 +194,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StellaCorner_01
       objectReference: {fileID: 0}
+    - target: {fileID: 3333415725951916503, guid: 992487989c8981b4f90f47516bf830a0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e3909ee1d5b315241bf6368ee81f10a1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 992487989c8981b4f90f47516bf830a0, type: 3}
 --- !u!4 &5778042216859989375 stripped
