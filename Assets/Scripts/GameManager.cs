@@ -34,23 +34,26 @@ namespace GJgame
         public CinemachineVirtualCamera PlayerCamera;
 
         public ShopItemLibrary ItemLibrary;
+        
+        public LabelLibrary LabelLibrary;
 
         public int Difficulty = 0;
         private void Start()
         {
             ItemLibrary.Init();
+            LabelLibrary.Init();
             Restart();
         }
 
         public void Restart()
         {
             LevelMap.Seed = Random.Range(0, 200);
-            var size = (int)Mathf.Clamp(Difficulty * 1.5f, 4, 15);
+            var size = (int)Mathf.Clamp(Difficulty * 1.5f, 5, 15);
             var oblong = Random.Range(-2, 3);
             LevelMap.Size =new Vector2Int(size + oblong, size - oblong);
             LevelMap.MaxBreaks = Mathf.Clamp(10 - Difficulty, 1, 5);
             var allowed = ShopItemType.Baked;
-            for (int i = 1; i < Difficulty && i < 6; i++)
+            for (int i = 1; i <= Difficulty && i < 7; i++)
             {
                 allowed |= (ShopItemType)(1 << i);
             }

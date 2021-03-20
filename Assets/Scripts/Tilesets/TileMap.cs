@@ -79,11 +79,25 @@ public class TileMap : MonoBehaviour
             for (int zSize = 0; zSize < Size.y; zSize++)
             {
                 var typeTest = 0;
+                var putLabel = true;
                 if (isYLong)
+                {
                     typeTest = zSize / biomeWidth;
+                    putLabel = zSize % biomeWidth == 0;
+                }
                 else
+                {
                     typeTest = xSize / biomeWidth;
+                    putLabel = xSize % biomeWidth == 0;
+                }
                 var typedType = (ShopItemType)(1 << Mathf.Clamp(typeTest, 0, 6));
+                if (putLabel)
+                {
+                    var labelPrefab = GameManager.Instance.LabelLibrary.GetLabel(typedType);
+
+                    GameObject.Instantiate(labelPrefab, _tiles[xSize, zSize].transform);
+                }
+
                 _tiles[xSize, zSize].UpdateAisleState(typedType);
                 yield return null;
             }

@@ -8,7 +8,12 @@ namespace GJgame
     public class CartBasket : MonoBehaviour, IPickupAble
     {
         public Stack<ShopItem> CartInventory = new Stack<ShopItem>();
-      
+
+        public int itemPerLevel = 4;
+
+        public float YLevel = 0.1f;
+
+        public Collider BasketBoundary;
 
         public void Pickup()
         {
@@ -44,8 +49,13 @@ namespace GJgame
 
         private void PutItemInBasket(ShopItem item)
         {
-            item.transform.SetParent(transform, false);
-            item.transform.localPosition = Vector3.zero;
+            item.transform.SetParent(BasketBoundary.transform, false);
+
+            var localPos = Vector3.Scale(Random.insideUnitSphere, BasketBoundary.bounds.extents);
+            localPos = BasketBoundary.transform.rotation * localPos;
+            localPos.y = YLevel * (CartInventory.Count / itemPerLevel);
+            item.transform.localRotation = Quaternion.AngleAxis(Random.Range(0, 360), Vector3.up);
+            item.transform.localPosition = localPos;
         }
     }
 }
