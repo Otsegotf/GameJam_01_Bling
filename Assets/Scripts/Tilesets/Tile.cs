@@ -1,3 +1,4 @@
+using GJgame;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,17 +10,29 @@ public class Tile : MonoBehaviour
 
     public Vector2Int TileId;
 
-    public StateToggler N;
+    public StateToggler Ntoggle;
 
-    public StateToggler S;
+    public StateToggler Stoggle;
 
-    public StateToggler E;
+    public StateToggler Etoggle;
 
-    public StateToggler W;
+    public StateToggler Wtoggle;
 
-    public GameObject WallW;
+    public AisleConstructor N;
+
+    public AisleConstructor S;
+
+    public AisleConstructor E;
+
+    public AisleConstructor W;
 
     public GameObject WallN;
+
+    public GameObject WallS;
+
+    public GameObject WallE;
+
+    public GameObject WallW;
 
     public GameObject ISLE;
 
@@ -35,7 +48,6 @@ public class Tile : MonoBehaviour
         set
         {
             _state = value;
-            SetState(_state);
         }
     }
     // Start is called before the first frame update
@@ -50,12 +62,16 @@ public class Tile : MonoBehaviour
         
     }
 
-    public void SetState(TileStates state)
+    public void UpdateAisleState(ShopItemType type)
     {
-        E.SetState(State.HasFlag(TileStates.E));
-        S.SetState(State.HasFlag(TileStates.S));
-        N.SetState(State.HasFlag(TileStates.N));
-        W.SetState(State.HasFlag(TileStates.W));
+        Etoggle.SetState(_state.HasFlag(TileStates.E));
+        Ntoggle.SetState(_state.HasFlag(TileStates.N));
+        Wtoggle.SetState(_state.HasFlag(TileStates.W));
+        Stoggle.SetState(_state.HasFlag(TileStates.S));
+        E.SetAisleState(_state.HasFlag(TileStates.E), _state.HasFlag(TileStates.N), _state.HasFlag(TileStates.S), type);
+        W.SetAisleState(_state.HasFlag(TileStates.W), _state.HasFlag(TileStates.S), _state.HasFlag(TileStates.N), type);
+        S.SetAisleState(_state.HasFlag(TileStates.S), _state.HasFlag(TileStates.E), _state.HasFlag(TileStates.W), type);
+        N.SetAisleState(_state.HasFlag(TileStates.N), _state.HasFlag(TileStates.W), _state.HasFlag(TileStates.E), type);
     }
 }
 [Flags]

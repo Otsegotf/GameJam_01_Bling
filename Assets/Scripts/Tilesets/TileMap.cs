@@ -1,3 +1,4 @@
+using GJgame;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,38 +23,24 @@ public class TileMap : MonoBehaviour
 
     public static TileMap Instance;
 
-    private float _curCd = 5;
+    public ShopItemType AvailableItems;
 
-    private Coroutine GeneratorRoutine;
     // Start is called before the first frame update
-    void Start()
+    public IEnumerator GenerateMap()
     {
-        Instance = this;
-        _curCd = Cooldown;
-        if (Seed == 0)
+        var itemCount = (int)AvailableItems.Count();
+        var biomeWidth = 0;
+        var isYLong = false;
+        if (Size.x > Size.y)
         {
-            Seed = Random.Range(0, 99999999);
+            biomeWidth = Size.x / itemCount;
         }
-        GenerateMap();
-    }
+        else
+        {
+            isYLong = true;
+            biomeWidth = Size.y / itemCount;
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //if (GeneratorRoutine == null)
-        //{
-        //    _curCd -= Time.deltaTime;
-        //    if (_curCd < 0)
-        //    {
-        //        _curCd = Cooldown;
-        //        Seed = Random.Range(0, 99999999);
-
-        //        GenerateMap();
-        //    }
-        //}
-    }
-    public void GenerateMap()
-    {
         Random.InitState(Seed);
         _tiles = new Tile[Size.x, Size.y];
         _neighboors = new Dictionary<Tile, List<Tile>>();
@@ -74,17 +61,33 @@ public class TileMap : MonoBehaviour
                 newTile.State = newState;
                 newTile.transform.SetParent(Target);
                 newTile.transform.localPosition = new Vector3(i, 0, z) * newTile.TileSize;
-                if(i == 0)
+
+                newTile.WallW.SetActive(i == 0);
+                newTile.WallE.SetActive(i == Size.x - 1);
+                newTile.WallN.SetActive(z == Size.y - 1);
+                if (z == 0 && i <= 1)
                 {
-                    newTile.WallW.SetActive(true);
+                    newTile.State &= ~TileStates.S;
                 }
-                if(z == Size.y - 1)
-                {
-                    newTile.WallN.SetActive(true);
-                }
+                newTile.WallS.SetActive(z == 0 && i > 1);
+                yield return null;
             }
         }
-        GeneratorRoutine = StartCoroutine(CheckConnectivity(_tiles[0, 0]));
+        yield return StartCoroutine(CheckConnectivity(_tiles[0, 0]));
+        for (int xSize = 0; xSize < Size.x; xSize++)
+        {
+            for (int zSize = 0; zSize < Size.y; zSize++)
+            {
+                var typeTest = 0;
+                if (isYLong)
+                    typeTest = zSize / biomeWidth;
+                else
+                    typeTest = xSize / biomeWidth;
+                var typedType = (ShopItemType)(1 << Mathf.Clamp(typeTest, 0, 6));
+                _tiles[xSize, zSize].UpdateAisleState(typedType);
+                yield return null;
+            }
+        }
     }
     private IEnumerator CheckConnectivity(Tile startPoint)
     {
@@ -181,7 +184,6 @@ public class TileMap : MonoBehaviour
                 }
             }
         }
-        GeneratorRoutine = null;
     }
 
     private void GetAdjasent(Tile starting, out List<Tile> connected, out List<Tile> disconected)

@@ -30,8 +30,7 @@ namespace GJgame
 
         private Quaternion _targetRotation;
 
-        [SerializeField]
-        private Camera _controlCamera;
+        public Transform ControlCamera;
         // Start is called before the first frame update
         void Start()
         {
@@ -39,7 +38,7 @@ namespace GJgame
             Controls = new DefaultMovement();
             Controls.Enable();
             _movementAction = Controls.Movement.MoveDirection;
-            Controls.Movement.Run.performed += Run_performed; ;
+            Controls.Movement.Run.performed += Run_performed; 
         }
 
         private void Run_performed(InputAction.CallbackContext obj)
@@ -52,7 +51,7 @@ namespace GJgame
         void Update()
         {
             DirectionInput = _movementAction.ReadValue<Vector2>();
-            var forward = Vector3.ProjectOnPlane(_controlCamera.transform.forward, Vector3.up);
+            var forward = Vector3.ProjectOnPlane(ControlCamera.transform.forward, Vector3.up);
             var inputDir = new Vector3(DirectionInput.x, 0, DirectionInput.y);
             forward = Quaternion.LookRotation(forward) * inputDir;
             var curSpeed = _running ? RunningSpeed : Speed;
