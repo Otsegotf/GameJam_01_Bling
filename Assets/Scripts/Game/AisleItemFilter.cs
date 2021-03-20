@@ -19,10 +19,13 @@ namespace GJgame
                 var zone = SpawnZones[i];
                 for (int z = 0; z < Density; z++)
                 {
-                    var pos = Vector3.Scale(Random.insideUnitSphere, zone.transform.rotation * zone.bounds.extents);
+                    var pos = Vector3.Scale(Random.insideUnitSphere, zone.bounds.extents);
+                    pos = zone.transform.rotation * pos;
+                    pos.y = 0;
                     var newItem = GameObject.Instantiate(item, transform);
                     newItem.transform.position = zone.transform.TransformPoint(pos);
-                    newItem.transform.rotation = Quaternion.AngleAxis(Random.Range(-180, 180), zone.transform.up);
+                    var randomForward = Quaternion.AngleAxis(Random.Range(0, 360), zone.transform.up) * zone.transform.forward;
+                    newItem.transform.rotation = Quaternion.LookRotation(randomForward);
                 }
             }
         }

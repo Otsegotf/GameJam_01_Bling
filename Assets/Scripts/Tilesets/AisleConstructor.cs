@@ -38,11 +38,11 @@ public class AisleConstructor : MonoBehaviour
         }
 
         var aisle = GetComponentsInChildren<AisleItemFilter>();
+        ItemPrefab = GameManager.Instance.ItemLibrary.GetRandomItemOfType(prefferedItemType);
         if (aisle.Length > 0 && aisle[0].AllowedItemTypes.HasFlag(prefferedItemType))
         {
             for (int i = 0; i < aisle.Length; i++)
             {
-                ItemPrefab = GameManager.Instance.ItemLibrary.GetRandomItemOfType(prefferedItemType);
                 aisle[i].FillAisle(ItemPrefab);
             }
         }
