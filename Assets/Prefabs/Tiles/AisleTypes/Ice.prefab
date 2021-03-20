@@ -231,7 +231,7 @@ MonoBehaviour:
   - {fileID: 2164047073764957613}
   - {fileID: 3055708801442483345}
   Density: 3
-  AllowedItemTypes: 26
+  AllowedItemTypes: 58
 --- !u!1001 &1379912505611121778
 PrefabInstance:
   m_ObjectHideFlags: 0

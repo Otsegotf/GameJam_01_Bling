@@ -28,6 +28,8 @@ namespace GJgame
         public CinemachineVirtualCamera PlayerCamera;
 
         public ShopItemLibrary ItemLibrary;
+
+        public int Difficulty = 0;
         private void Start()
         {
             ItemLibrary.Init();
@@ -37,6 +39,18 @@ namespace GJgame
         public void Restart()
         {
             LevelMap.Seed = Random.Range(0, 200);
+            var size = (int)Mathf.Clamp(Difficulty * 1.5f, 4, 15);
+            var oblong = Random.Range(-2, 3);
+            LevelMap.Size =new Vector2Int(size + oblong, size - oblong);
+            LevelMap.MaxBreaks = Mathf.Clamp(10 - Difficulty, 1, 5);
+            var allowed = ShopItemType.Baked;
+            for (int i = 1; i < Difficulty && i < 6; i++)
+            {
+                allowed |= (ShopItemType)(1 << i);
+            }
+            LevelMap.AvailableItems = allowed;
+            Difficulty++;
+            Debug.Log($"FOR SALE NOW {allowed}");
             StartCoroutine(StartGame());
         }
         public IEnumerator StartGame()
@@ -53,6 +67,7 @@ namespace GJgame
             PlayerCamera.Follow = Player.transform;
             PlayerCamera.LookAt = Player.transform;
             Jay.SetAiActive(true);
+            BuyListManager.Instance.GenerateList(Difficulty * 2);
         }
 
         public AisleConstructor GetRandomAisle()

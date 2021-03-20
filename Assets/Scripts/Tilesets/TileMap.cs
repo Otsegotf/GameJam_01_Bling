@@ -23,12 +23,24 @@ public class TileMap : MonoBehaviour
 
     public static TileMap Instance;
 
-    private float _curCd = 5;
+    public ShopItemType AvailableItems;
 
-    private Coroutine GeneratorRoutine;
     // Start is called before the first frame update
     public IEnumerator GenerateMap()
     {
+        var itemCount = (int)AvailableItems.Count();
+        var biomeWidth = 0;
+        var isYLong = false;
+        if (Size.x > Size.y)
+        {
+            biomeWidth = Size.x / itemCount;
+        }
+        else
+        {
+            isYLong = true;
+            biomeWidth = Size.y / itemCount;
+        }
+
         Random.InitState(Seed);
         _tiles = new Tile[Size.x, Size.y];
         _neighboors = new Dictionary<Tile, List<Tile>>();
@@ -62,13 +74,17 @@ public class TileMap : MonoBehaviour
             }
         }
         yield return StartCoroutine(CheckConnectivity(_tiles[0, 0]));
-        for (int i = 0; i < Size.x; i++)
+        for (int xSize = 0; xSize < Size.x; xSize++)
         {
-            for (int z = 0; z < Size.y; z++)
+            for (int zSize = 0; zSize < Size.y; zSize++)
             {
-                var typeTest = Random.Range(0, 7);
-                var typedType = (ShopItemType)(1 << typeTest);
-                _tiles[i, z].UpdateAisleState(typedType);
+                var typeTest = 0;
+                if (isYLong)
+                    typeTest = zSize / biomeWidth;
+                else
+                    typeTest = xSize / biomeWidth;
+                var typedType = (ShopItemType)(1 << Mathf.Clamp(typeTest, 0, 6));
+                _tiles[xSize, zSize].UpdateAisleState(typedType);
                 yield return null;
             }
         }
@@ -168,7 +184,6 @@ public class TileMap : MonoBehaviour
                 }
             }
         }
-        GeneratorRoutine = null;
     }
 
     private void GetAdjasent(Tile starting, out List<Tile> connected, out List<Tile> disconected)
