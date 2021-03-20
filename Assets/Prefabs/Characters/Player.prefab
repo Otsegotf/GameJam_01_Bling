@@ -64,10 +64,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DirectionInput: {x: 0, y: 0}
-  Speed: 1
-  RunningSpeed: 3
-  RotationSpeed: 30
-  _controlCamera: {fileID: 0}
+  Speed: 3
+  RunningSpeed: 6
+  RotationSpeed: 360
+  ControlCamera: {fileID: 0}
 --- !u!1001 &5385965986567560850
 PrefabInstance:
   m_ObjectHideFlags: 0
