@@ -3,7 +3,12 @@ guid: 0fc63135e09292c458e670240bfd2295
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong1
+    second: {fileID: 2100000, guid: f7e3739986879cd4796903c3fc376672, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
