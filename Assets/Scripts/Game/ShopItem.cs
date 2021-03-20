@@ -6,6 +6,8 @@ namespace GJgame
 {
     public class ShopItem : MonoBehaviour
     {
+        public int Size = 1;
+
         public ShopItemType ItemType;
     }
 
