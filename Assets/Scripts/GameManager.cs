@@ -45,7 +45,7 @@ namespace GJgame
         public void Restart()
         {
             LevelMap.Seed = Random.Range(0, 200);
-            var size = (int)Mathf.Clamp(Difficulty * 1.5f, 4, 15);
+            var size = (int)Mathf.Clamp(Difficulty * 1.5f, 5, 15);
             var oblong = Random.Range(-2, 3);
             LevelMap.Size =new Vector2Int(size + oblong, size - oblong);
             LevelMap.MaxBreaks = Mathf.Clamp(10 - Difficulty, 1, 5);
