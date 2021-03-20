@@ -80,7 +80,7 @@ namespace GJgame
             Player.ControlCamera = PlayerCamera.transform;
             PlayerCamera.Follow = Player.transform;
             PlayerCamera.LookAt = Player.transform;
-            Jay.SetAiActive(true);
+            Jay.IsPlaying = true;
             BuyListManager.Instance.GenerateList(Difficulty * 2);
             TriggerForEnd.gameObject.SetActive(true);
         }
@@ -137,7 +137,7 @@ namespace GJgame
             Win("YOU WON");
         }
 
-        private void GameOver(string text)
+        public void GameOver(string text)
         {
             Debug.Log(text);
             Difficulty = 0;
