@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1015604131971178750}
   - component: {fileID: 4309788510673560971}
+  - component: {fileID: 4356259019846537328}
   m_Layer: 0
   m_Name: Bob
   m_TagString: Untagged
@@ -54,6 +55,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4356259019846537328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383921144308169284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5efcdad4d68ac404f81873dc9386484d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StunFX: {fileID: 0}
+  BashFX: {fileID: 0}
 --- !u!1 &1093481526393804465
 GameObject:
   m_ObjectHideFlags: 0

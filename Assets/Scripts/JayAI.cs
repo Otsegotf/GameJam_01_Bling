@@ -154,6 +154,7 @@ namespace GJgame
             if(CurrentState == BobState.Stealing)
             {
                 SetState(BobState.Stunned);
+                GameManager.Instance.Player.PlayerAnim.SetTrigger("Hit");
             }
         }
 
