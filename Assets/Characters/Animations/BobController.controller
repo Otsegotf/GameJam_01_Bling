@@ -51,7 +51,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Bob|Bob_Move
-  m_Speed: 1.5
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -63,7 +63,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -8291831857916650022, guid: ead3b8817f771d346b727d9a47d15cbb, type: 3}
+  m_Motion: {fileID: 20252276393512678, guid: 7ba726047a2630e418c29bec4aa8510d, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

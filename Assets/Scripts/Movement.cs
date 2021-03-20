@@ -9,9 +9,9 @@ namespace GJgame
     {
         public Rigidbody Hands;
 
-        private InputAction _movementAction;
+        public Animator PlayerAnim;
 
-        private InputAction _grabAction, _detachAction;
+        private InputAction _movementAction;
 
         [SerializeField]
         private DefaultMovement Controls;
@@ -32,9 +32,15 @@ namespace GJgame
 
         private Quaternion _targetRotation;
 
-        private CartMovement _cart;
+        public IPickupAble CurrentPickup;
+
+        private IPickupAble _targetPickup;
+
+        public ShopItem CarriedItem;
 
         public Transform ControlCamera;
+
+        public float MaxPickupDistance = 1f;
         // Start is called before the first frame update
         void Start()
         {
@@ -44,34 +50,55 @@ namespace GJgame
             _movementAction = Controls.Movement.MoveDirection;
             Controls.Interactions.Activate.performed += Activate_performed;
             Controls.Interactions.Detach.performed += Detach_performed;
+            SetCartState(false);
         }
 
         private void Detach_performed(InputAction.CallbackContext obj)
         {
-            if (_cartAttached && _cart)
+            if (CurrentPickup != null)
             {
-                _cart.DeatachCart();
-                _cartAttached = false;
+                var comp = (CurrentPickup as Component);
+                if (comp == null)
+                {
+                    CurrentPickup = null;
+                    return;
+                }
+                CurrentPickup.Drop();
             }
         }
 
         private void Activate_performed(InputAction.CallbackContext obj)
         {
-            if (!_cartAttached && _canAttachCart)
+            if (_targetPickup != null)
             {
-                _cart.AttachCartToPlayer();
-                _cartAttached = true;
+                var comp = (_targetPickup as Component);
+                if (comp == null)
+                {
+                    CurrentPickup = null;
+                    return;
+                }
+                var pickTransform = comp.transform;
+                var dist = transform.position - pickTransform.position;
+                if (dist.magnitude < MaxPickupDistance)
+                    _targetPickup.Pickup();
             }
+        } 
+
+        public void SetCurrentPickup(IPickupAble pick)
+        {
+            CurrentPickup = pick;
         }
 
         // Update is called once per frame
         void Update()
         {
             DirectionInput = _movementAction.ReadValue<Vector2>();
+
+            PlayerAnim.SetFloat("Movement", Mathf.Clamp01(DirectionInput.magnitude));
             var forward = Vector3.ProjectOnPlane(ControlCamera.transform.forward, Vector3.up);
             var inputDir = new Vector3(DirectionInput.x, 0, DirectionInput.y);
             forward = Quaternion.LookRotation(forward) * inputDir;
-            var curSpeed = _cartAttached ? Speed: RunningSpeed;
+            var curSpeed = CurrentPickup != null ? Speed: RunningSpeed;
             _controller.SimpleMove(forward * inputDir.magnitude * curSpeed + Vector3.down);// * Time.deltaTime);
 
             if (inputDir.sqrMagnitude > 0)
@@ -85,17 +112,16 @@ namespace GJgame
             }
         }
 
-        public void SetCartAvailable(CartMovement cart, bool isAvailable)
+        public void SetTrackedPickupable(IPickupAble pickupable)
         {
-            _cart = cart;
-            _canAttachCart = isAvailable;
+            _targetPickup = pickupable;
         }
         public void SetCartState(bool state)
         {
             if (state)
             {
                 _controller.center = new Vector3(0, 1.2f, 1);
-                _controller.radius = 1f;
+                _controller.radius = 0.8f;
             }
             else
             {

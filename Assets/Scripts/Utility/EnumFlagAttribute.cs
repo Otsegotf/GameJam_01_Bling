@@ -25,3 +25,10 @@ public static class EnumFlagUtils
         return c;
     }
 }
+
+public interface IPickupAble
+{
+    void Pickup();
+
+    void Drop();
+}

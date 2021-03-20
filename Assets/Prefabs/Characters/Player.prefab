@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3821083487818655088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.03, z: 0.96}
+  m_LocalPosition: {x: 0, y: 1.03, z: 0.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3836861285103187134}
@@ -112,11 +112,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hands: {fileID: 1562735301782627738}
+  PlayerAnim: {fileID: 3346028292914815117}
   DirectionInput: {x: 0, y: 0}
   Speed: 3
   RunningSpeed: 6
   RotationSpeed: 360
+  CarriedItem: {fileID: 0}
   ControlCamera: {fileID: 0}
+  MaxPickupDistance: 2
 --- !u!1001 &5385965986567560850
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -177,5 +180,10 @@ PrefabInstance:
 --- !u!4 &6336561125186227386 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2112530457054958120, guid: 28d0799188d5fb44999c06c25f8e9d1a, type: 3}
+  m_PrefabInstance: {fileID: 5385965986567560850}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3346028292914815117 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7264781764674600479, guid: 28d0799188d5fb44999c06c25f8e9d1a, type: 3}
   m_PrefabInstance: {fileID: 5385965986567560850}
   m_PrefabAsset: {fileID: 0}
