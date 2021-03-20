@@ -1,33 +1,53 @@
 fileFormatVersion: 2
-guid: 9510c2c641e3cc34483eaeee8a2df747
+guid: 7ba726047a2630e418c29bec4aa8510d
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: 2582661845352665306
-    second: Bob|Move
+      74: 8408395761943225364
+    second: '@Bob_Steal'
   - first:
-      74: -2375360984417422461
-    second: Bob|Move.001
+      74: 2192350744489157321
+    second: '@Bob_Idle'
   - first:
-      74: -8618849898924082150
-    second: Bob|Move.002
+      74: -5531522067146567711
+    second: '@Bob_Idle2'
   - first:
-      74: -9089342723065457695
-    second: Bob|Move.003
+      74: -849044266806585216
+    second: '@Bob_Angry'
   - first:
-      74: 4808668307136287065
-    second: Bob|Move.004
+      74: -5936375566320762173
+    second: Bob_Pain
   - first:
-      74: -4880790126119362787
-    second: Bob|Move.005
+      74: 20252276393512678
+    second: '@Bob_Move'
   - first:
-      74: -8431313013841370972
-    second: Bob|Move.006
+      74: 2740599299548568308
+    second: Bob|@Bob_Angry
   - first:
-      74: 2353817258909989158
-    second: Bob|Move.007
-  externalObjects: {}
+      74: -8453211918002758617
+    second: Bob|@Bob_Idle
+  - first:
+      74: 489401128387363813
+    second: Bob|@Bob_Idle2
+  - first:
+      74: 5141437609479085423
+    second: Bob|@Bob_Steal
+  - first:
+      74: 8053861814347005479
+    second: Bob|@Bob_Move
+  - first:
+      74: -2747165080780873955
+    second: Bob|@Bob_Move.001
+  - first:
+      74: -4079254574242907071
+    second: Bob|Bob_Pain
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 5cfc32260016c6a429243d367ca3550c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -56,11 +76,156 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Bob|Move
-      takeName: Bob|Move
+      name: '@Bob_Steal'
+      takeName: '@Bob_Steal'
       internalID: 0
       firstFrame: 0
-      lastFrame: 60
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: '@Bob_Idle'
+      takeName: '@Bob_Idle'
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 80
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: '@Bob_Idle2'
+      takeName: '@Bob_Idle2'
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: '@Bob_Angry'
+      takeName: '@Bob_Angry'
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Bob_Pain
+      takeName: Bob_Pain
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: '@Bob_Move'
+      takeName: '@Bob_Move'
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 20
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

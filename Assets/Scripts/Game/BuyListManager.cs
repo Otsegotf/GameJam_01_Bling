@@ -7,20 +7,26 @@ namespace GJgame
     public class BuyListManager : Singleton<BuyListManager>
     {
 
-        public List<ShopItem> CurrentList;
+        public Dictionary<ShopItem, int> CurrentList;
         public void GenerateList(int length)
         {
-            CurrentList = new List<ShopItem>();
-            var aisles = GameManager.Instance.Aisles;
+            CurrentList = new Dictionary<ShopItem, int>();
+            AisleConstructor aisle = null;
             for (int i = 0; i < length; i++)
             {
-                var aisle = GameManager.Instance.GetRandomAisle();
-                CurrentList.Add(aisle.ItemPrefab);
+                while(aisle == null || !aisle.ItemPrefab)
+                    aisle = GameManager.Instance.GetRandomAisle();
+                if(!CurrentList.ContainsKey(aisle.ItemPrefab))
+                {
+                    CurrentList[aisle.ItemPrefab] = 0;
+                }
+                CurrentList[aisle.ItemPrefab]++;
+                aisle = null;
             }
             Debug.Log("[SHOPPING LIST] NEW LIST IS");
-            for (int i = 0; i < CurrentList.Count; i++)
+            foreach (var item in CurrentList)
             {
-                Debug.Log(CurrentList[i]);
+                Debug.Log($"{item.Key.name} x {item.Value}");
             }
         }
     }

@@ -7,7 +7,7 @@ public class AisleConstructor : MonoBehaviour
 {
     public Transform AisleTarget;
 
-    public SingleSwitcher NonCornerVisual;
+    public ShopItemSwitcher NonCornerVisual;
 
     public SingleSwitcher CornerVisual;
 
@@ -16,8 +16,11 @@ public class AisleConstructor : MonoBehaviour
     public StateToggler RightCorner;
 
     public ShopItem ItemPrefab;
+
+    public ShopItemType CurrentPreferedType;
     public void SetAisleState(bool isAisle, bool leftCorner, bool rightCorner, ShopItemType prefferedItemType)
     {
+        CurrentPreferedType = prefferedItemType;
         gameObject.SetActive(isAisle);
         var isCorner = leftCorner || rightCorner;
         NonCornerVisual.gameObject.SetActive(!isCorner);
@@ -29,11 +32,19 @@ public class AisleConstructor : MonoBehaviour
             LeftCorner.SetState(leftCorner);
             RightCorner.SetState(rightCorner);
         }
-
-        var aisle = GetComponentInChildren<AisleItemFilter>();
-        if (aisle && aisle.AllowedItemTypes.HasFlag(prefferedItemType))
+        else
         {
-            aisle.FillAisle(GameManager.Instance.ItemLibrary.GetRandomItemOfType(prefferedItemType));
+            NonCornerVisual.SetAisle(prefferedItemType);
+        }
+
+        var aisle = GetComponentsInChildren<AisleItemFilter>();
+        if (aisle.Length > 0 && aisle[0].AllowedItemTypes.HasFlag(prefferedItemType))
+        {
+            for (int i = 0; i < aisle.Length; i++)
+            {
+                ItemPrefab = GameManager.Instance.ItemLibrary.GetRandomItemOfType(prefferedItemType);
+                aisle[i].FillAisle(ItemPrefab);
+            }
         }
     }
 }

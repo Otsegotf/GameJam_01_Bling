@@ -153,14 +153,22 @@
                     "id": "531b07e2-e35b-4386-beb8-bdde6b999889",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press"
+                },
+                {
+                    "name": "Detach",
+                    "type": "Button",
+                    "id": "0fc69a46-c900-4042-ad9c-e51902417657",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "d583810a-7011-4f0a-9b48-0c5bde3d6da1",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Default",
@@ -171,11 +179,33 @@
                 {
                     "name": "",
                     "id": "ff798777-ba43-4278-89e1-bfafda52c739",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Default",
                     "action": "Activate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "059160c7-7036-4be1-a2d4-c58b611f4db5",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Default",
+                    "action": "Detach",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b3cc7aa8-1599-4151-9f47-9eeb085ba668",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Default",
+                    "action": "Detach",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
