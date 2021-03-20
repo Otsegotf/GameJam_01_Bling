@@ -26,33 +26,7 @@ public class TileMap : MonoBehaviour
 
     private Coroutine GeneratorRoutine;
     // Start is called before the first frame update
-    void Start()
-    {
-        Instance = this;
-        _curCd = Cooldown;
-        if (Seed == 0)
-        {
-            Seed = Random.Range(0, 99999999);
-        }
-        GenerateMap();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //if (GeneratorRoutine == null)
-        //{
-        //    _curCd -= Time.deltaTime;
-        //    if (_curCd < 0)
-        //    {
-        //        _curCd = Cooldown;
-        //        Seed = Random.Range(0, 99999999);
-
-        //        GenerateMap();
-        //    }
-        //}
-    }
-    public void GenerateMap()
+    public IEnumerator GenerateMap()
     {
         Random.InitState(Seed);
         _tiles = new Tile[Size.x, Size.y];
@@ -74,17 +48,14 @@ public class TileMap : MonoBehaviour
                 newTile.State = newState;
                 newTile.transform.SetParent(Target);
                 newTile.transform.localPosition = new Vector3(i, 0, z) * newTile.TileSize;
-                if(i == 0)
-                {
-                    newTile.WallW.SetActive(true);
-                }
-                if(z == Size.y - 1)
-                {
-                    newTile.WallN.SetActive(true);
-                }
+
+                newTile.WallW.SetActive(i == 0);
+                newTile.WallE.SetActive(i == Size.x - 1);
+                newTile.WallN.SetActive(z == Size.y - 1);
+                newTile.WallS.SetActive(z == 0);
             }
         }
-        GeneratorRoutine = StartCoroutine(CheckConnectivity(_tiles[0, 0]));
+        yield return StartCoroutine(CheckConnectivity(_tiles[0, 0]));
     }
     private IEnumerator CheckConnectivity(Tile startPoint)
     {

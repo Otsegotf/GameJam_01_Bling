@@ -17,9 +17,13 @@ public class Tile : MonoBehaviour
 
     public StateToggler W;
 
-    public GameObject WallW;
-
     public GameObject WallN;
+
+    public GameObject WallS;
+
+    public GameObject WallE;
+
+    public GameObject WallW;
 
     public GameObject ISLE;
 
