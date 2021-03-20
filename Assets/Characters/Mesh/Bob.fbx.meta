@@ -22,6 +22,9 @@ ModelImporter:
       74: 20252276393512678
     second: '@Bob_Move'
   - first:
+      74: -1232190086655745331
+    second: '@Bob_Stun'
+  - first:
       74: 2740599299548568308
     second: Bob|@Bob_Angry
   - first:
@@ -40,14 +43,102 @@ ModelImporter:
       74: -2747165080780873955
     second: Bob|@Bob_Move.001
   - first:
+      74: -8378920594502109035
+    second: Bob|@Bob_stun
+  - first:
+      74: 2914598838291266945
+    second: Bob|@Bob_Stun
+  - first:
+      74: -5895196917832404077
+    second: Bob|@Jay_Grab
+  - first:
+      74: -4343177781072757700
+    second: Bob|@Jay_Punch
+  - first:
+      74: -2706028527989115443
+    second: Bob|Bob.001|@Bob_Angry|@Bob_Angry
+  - first:
+      74: -3220316682920162435
+    second: Bob|Bob.001|@Bob_Idle2|@Bob_Idle2
+  - first:
+      74: -6184573411471972084
+    second: Bob|Bob.001|@Bob_Idle|@Bob_Idle
+  - first:
+      74: 4296844660087826673
+    second: Bob|Bob.001|@Bob_Move|@Bob_Move
+  - first:
+      74: 1050736901286140102
+    second: Bob|Bob.001|@Bob_Steal|@Bob_Steal
+  - first:
+      74: -5221561605829457355
+    second: Bob|Bob.001|Bob_Pain|Bob_Pain
+  - first:
+      74: 6842865494093627514
+    second: Bob|Bob.001|Bob|@Bob_Angry|Bob|@Bob_Angry
+  - first:
+      74: -9192553473008162006
+    second: Bob|Bob.001|Bob|@Bob_Idle2|Bob|@Bob_Idle2
+  - first:
+      74: 73501085485761361
+    second: Bob|Bob.001|Bob|@Bob_Idle|Bob|@Bob_Idle
+  - first:
+      74: 6749502422828303980
+    second: Bob|Bob.001|Bob|@Bob_Move.001|Bob|@Bob_Move.001
+  - first:
+      74: -1297106135601650135
+    second: Bob|Bob.001|Bob|@Bob_Move|Bob|@Bob_Move
+  - first:
+      74: 7692836590174458705
+    second: Bob|Bob.001|Bob|@Bob_Steal|Bob|@Bob_Steal
+  - first:
+      74: -5480006289107584558
+    second: Bob|Bob.001|Bob|Bob_Pain|Bob|Bob_Pain
+  - first:
       74: -4079254574242907071
     second: Bob|Bob_Pain
-  externalObjects:
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: 5cfc32260016c6a429243d367ca3550c, type: 2}
+      74: 1067082695665591989
+    second: Bob|Jay.001|@Jay_Grab|@Jay_Grab
+  - first:
+      74: 5350334735109419056
+    second: Bob|Jay.001|@Jay_Punch|@Jay_Punch
+  - first:
+      74: 5752347145018463896
+    second: Bob|Jay.001|Jay_Move|Jay_Move
+  - first:
+      74: -1642277145369748023
+    second: Bob|Jay.001|Jay|@Bob_Angry|Jay|@Bob_Angry
+  - first:
+      74: -8356909161186959563
+    second: Bob|Jay.001|Jay|@Bob_Idle2|Jay|@Bob_Idle2
+  - first:
+      74: 7230367143646319360
+    second: Bob|Jay.001|Jay|@Bob_Idle|Jay|@Bob_Idle
+  - first:
+      74: -2095580103632270892
+    second: Bob|Jay.001|Jay|@Bob_Move.001|Jay|@Bob_Move.001
+  - first:
+      74: -9085906190872673505
+    second: Bob|Jay.001|Jay|@Bob_Move|Jay|@Bob_Move
+  - first:
+      74: 2355435743156300495
+    second: Bob|Jay.001|Jay|@Bob_Steal|Jay|@Bob_Steal
+  - first:
+      74: 7175996420129763683
+    second: Bob|Jay.001|Jay|@Jay_Grab|Jay|@Jay_Grab
+  - first:
+      74: -415765043717691206
+    second: Bob|Jay.001|Jay|@Jay_Punch|Jay|@Jay_Punch
+  - first:
+      74: -8538165648601785057
+    second: Bob|Jay.001|Jay|Bob_Pain|Jay|Bob_Pain
+  - first:
+      74: 788665444197929158
+    second: Bob|Jay.001|Jay|Jay_Move|Jay|Jay_Move
+  - first:
+      74: -2902043515667985834
+    second: Bob|Jay_Move
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -223,6 +314,122 @@ ModelImporter:
     - serializedVersion: 16
       name: '@Bob_Move'
       takeName: '@Bob_Move'
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: '@Bob_Stun'
+      takeName: '@Bob_Stun'
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 75
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Bob|Jay.001|@Jay_Grab|@Jay_Grab
+      takeName: Bob|Jay.001|@Jay_Grab|@Jay_Grab
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Bob|Jay.001|@Jay_Punch|@Jay_Punch
+      takeName: Bob|Jay.001|@Jay_Punch|@Jay_Punch
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 23
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Bob|Jay.001|Jay_Move|Jay_Move
+      takeName: Bob|Jay.001|Jay_Move|Jay_Move
       internalID: 0
       firstFrame: 0
       lastFrame: 20
