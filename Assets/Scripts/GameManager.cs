@@ -90,6 +90,7 @@ namespace GJgame
             while (Transition.Instance.CurrentTransitionState < 1)
                 yield return null;
 
+            CashierCamera.gameObject.SetActive(false);
             if (Jay)
                 GameObject.Destroy(Jay.gameObject);
             if (Player)
@@ -159,6 +160,7 @@ namespace GJgame
             StopCoroutine(_gameTimerRoutine);
             CashierCamera.gameObject.SetActive(true);
             Player.gameObject.SetActive(false);
+            MusicPlayer.Instance.PlaySuspence();
             yield return new WaitForSeconds(2f);
 
             if (Jay)
@@ -177,7 +179,7 @@ namespace GJgame
                     CurrentItemPosition += Time.deltaTime / ItemMoveTime;
                     item.transform.position = Vector3.Lerp(ItemStartPosition.position, ItemEndPosition.position, CurrentItemPosition);
                     yield return null;
-                }
+                }                
                 if (neededItems.TryGetValue(item.name, out var value))
                 {
                     if (value.Count <= 0)
@@ -192,6 +194,7 @@ namespace GJgame
                     GameOver(GameOverType.TooMuch);
                     yield break;
                 }
+                GameObject.Destroy(item.gameObject);
             }
             foreach (var item in neededItems)
             {
@@ -232,6 +235,7 @@ namespace GJgame
         }
         public void GameOver(GameOverType type)
         {
+            MusicPlayer.Instance.PlayFail();
             TriggerForEnd.gameObject.SetActive(false);
             JayAudioManager.Instance.Stop();
             MainMenuManager.Instance.GameOver(type);
