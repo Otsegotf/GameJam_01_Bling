@@ -13,10 +13,17 @@ public class JayAudioManager : Singleton<JayAudioManager>
 
     public AudioClip DropCartSound;
 
+    public AudioClip EndTimerSound;
+
     public AudioClip _currentPlayedClip;
 
     public AudioSource Source;
 
+    public void PlayTimer()
+    {
+        Source.clip = EndTimerSound;
+        Resume();
+    }
     public void Pickup()
     {
         Source.PlayOneShot(PickupSound);

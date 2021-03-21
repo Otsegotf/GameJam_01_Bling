@@ -144,6 +144,7 @@ MonoBehaviour:
   DropSound: {fileID: 8300000, guid: 982f2b139d978b84f86f94850bd90398, type: 3}
   GetCartSound: {fileID: 8300000, guid: 082162df8ff37b04babbc3223514edf4, type: 3}
   DropCartSound: {fileID: 8300000, guid: 982f2b139d978b84f86f94850bd90398, type: 3}
+  EndTimerSound: {fileID: 8300000, guid: 99e0c42036aee8b4484fc66c8cee1cca, type: 3}
   _currentPlayedClip: {fileID: 0}
   Source: {fileID: 6332395395833460989}
 --- !u!1 &3821083487818655088
