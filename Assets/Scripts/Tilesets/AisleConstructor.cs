@@ -44,14 +44,18 @@ public class AisleConstructor : MonoBehaviour
             NonCornerVisual.SetAisle(prefferedItemType);
         }
 
+        bool hasItem = false;
         var aisle = GetComponentsInChildren<AisleItemFilter>();
         ItemPrefab = GameManager.Instance.ItemLibrary.GetRandomItemOfType(prefferedItemType);
         if (aisle.Length > 0 && aisle[0].AllowedItemTypes.HasFlag(prefferedItemType))
         {
+            hasItem = true;
             for (int i = 0; i < aisle.Length; i++)
             {
                 aisle[i].FillAisle(ItemPrefab);
             }
         }
+        if (!hasItem)
+            ItemPrefab = null;
     }
 }
