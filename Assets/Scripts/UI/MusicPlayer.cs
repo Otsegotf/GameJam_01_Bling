@@ -11,6 +11,10 @@ public class MusicPlayer : Singleton<MusicPlayer>
 
     public AudioClip SirenClip;
 
+    public AudioClip FailClip;
+
+    public AudioClip SuspenceClip;
+
     public AudioSource Source;
     public void Play()
     {
@@ -20,6 +24,17 @@ public class MusicPlayer : Singleton<MusicPlayer>
         Source.Play();
     }
 
+    public void PlayFail()
+    {
+        Source.clip = FailClip;
+        Source.Play();
+    }
+
+    public void PlaySuspence()
+    {
+        Source.clip = SuspenceClip;
+        Source.Play();
+    }
     public void PlaySiren()
     {
         Source.clip = SirenClip;
