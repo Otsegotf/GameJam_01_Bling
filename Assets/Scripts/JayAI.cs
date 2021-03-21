@@ -35,6 +35,8 @@ namespace GJgame
 
         public bool IsPlaying = false;
 
+        public BobAudioManager BobAudio;
+
         private void Awake()
         {
             Agent.autoTraverseOffMeshLink = false;
@@ -92,6 +94,8 @@ namespace GJgame
 
         private void SetState(BobState newState)
         {
+            if (CurrentState == newState)
+                return;
             CurrentState = newState;
             switch (newState)
             {
@@ -110,18 +114,21 @@ namespace GJgame
                     Agent.enabled = true;
                     BobAnim.SetFloat(BlendParam, 1);
                     _curActionCd = 1f;
+                    BobAudio.SendStealWarning();
                     Repath(true);
                     break;
                 case BobState.Stealing:
                     Agent.enabled = false;
                     BobAnim.SetFloat(BlendParam, 2);
                     _curActionCd = StealTime;
+                    BobAudio.StartStealing();
                     break;
                 case BobState.Stunned:
                     Agent.enabled = false;
                     BobAnim.SetFloat(BlendParam, 3);
                     _curActionCd = StunTime;
                     _curStealCd = StealCD;
+                    BobAudio.Stop();
                     break;
                 default:
                     break;

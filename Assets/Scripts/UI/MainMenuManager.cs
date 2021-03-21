@@ -24,6 +24,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
         yield return new WaitForSeconds(1f);
         LoadNewScene(MainMenuScene);
         Transition.Instance.SetState(false);
+        MusicPlayer.Instance.Play();
     }
 
     public void LoadPlayScene()

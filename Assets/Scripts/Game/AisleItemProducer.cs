@@ -22,10 +22,12 @@ namespace GJgame
             {
                 player.CarriedItem = GameObject.Instantiate(Aisle.ItemPrefab, player.Hands.transform);
                 player.CarriedItem.name = Aisle.ItemPrefab.name;
+                JayAudioManager.Instance.Pickup();
             }
             else
             if (player.CarriedItem != null && player.CarriedItem.name == Aisle.ItemPrefab.name)
             {
+                JayAudioManager.Instance.Drop();
                 GameObject.Destroy(player.CarriedItem.gameObject);
             }
 
@@ -34,7 +36,10 @@ namespace GJgame
         public void RegisterPickup()
         {
             var player = GameManager.Instance.Player;
-            player.SetTrackedPickupable(this);
+            if (player.CarriedItem == null && player.CurrentPickup == null)
+                player.SetTrackedPickupable(this);
+            if (player.CarriedItem != null && player.CarriedItem.name == Aisle.ItemPrefab.name)
+                player.SetTrackedPickupable(this);
         }
     }
 }

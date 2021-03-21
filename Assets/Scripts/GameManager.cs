@@ -83,7 +83,9 @@ namespace GJgame
             BuyListManager.Instance.GenerateList(Difficulty * 2);
 
             Player.enabled = false;
-          
+
+            MusicPlayer.Instance.Stop();
+            MusicPlayer.Instance.Play();
 
             Transition.Instance.SetState(false);
             while (Transition.Instance.CurrentTransitionState > 0)

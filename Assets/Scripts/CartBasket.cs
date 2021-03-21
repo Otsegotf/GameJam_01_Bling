@@ -32,6 +32,7 @@ namespace GJgame
                     var item = CartInventory.Pop();
                     player.CarriedItem = item;
                     item.transform.SetParent(player.Hands.transform, false);
+                    JayAudioManager.Instance.Pickup();
                 }
             }
         }
@@ -56,6 +57,7 @@ namespace GJgame
             localPos.y = YLevel * (CartInventory.Count / itemPerLevel);
             item.transform.localRotation = Quaternion.AngleAxis(Random.Range(0, 360), Vector3.up);
             item.transform.localPosition = localPos;
+            JayAudioManager.Instance.Drop();
         }
     }
 }
