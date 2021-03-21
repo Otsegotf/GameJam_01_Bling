@@ -20,7 +20,7 @@ public class ShoppingListUI : Singleton<ShoppingListUI>
         foreach (var item in items)
         {
             var newItem = GameObject.Instantiate(ShoppingListItem, ListTransform);
-            newItem.text = $"{item.Key} x {item.Value.Count}";
+            newItem.text = $"{item.Value.Item.GetSpriteText} x {item.Value.Count}";
         }
     }
 }
