@@ -40,15 +40,11 @@ namespace GJgame
         public int Difficulty = 0;
 
         public EndZoneTrigger TriggerForEnd;
-        private void Start()
-        {
-            ItemLibrary.Init();
-            LabelLibrary.Init();
-            Restart();
-        }
 
         public void Restart()
         {
+            ItemLibrary.Init();
+            LabelLibrary.Init();
             LevelMap.Seed = Random.Range(0, 200);
             var size = (int)Mathf.Clamp(Difficulty * 1.5f, 5, 15);
             var oblong = Random.Range(-2, 3);
@@ -66,6 +62,10 @@ namespace GJgame
         }
         public IEnumerator StartGame()
         {
+            Transition.Instance.SetState(true);
+            while (Transition.Instance.CurrentTransitionState < 1)
+                yield return null;
+
             if (Jay)
                 GameObject.Destroy(Jay.gameObject);
             if (Player)
@@ -80,8 +80,16 @@ namespace GJgame
             Player.ControlCamera = PlayerCamera.transform;
             PlayerCamera.Follow = Player.transform;
             PlayerCamera.LookAt = Player.transform;
-            Jay.IsPlaying = true;
             BuyListManager.Instance.GenerateList(Difficulty * 2);
+
+            Player.enabled = false;
+          
+
+            Transition.Instance.SetState(false);
+            while (Transition.Instance.CurrentTransitionState > 0)
+                yield return null;
+            Player.enabled = true;
+            Jay.IsPlaying = true;
             TriggerForEnd.gameObject.SetActive(true);
         }
 

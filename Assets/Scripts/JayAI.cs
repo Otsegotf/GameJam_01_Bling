@@ -41,6 +41,12 @@ namespace GJgame
             _curStealCd = StealCD;
             SetState(BobState.Idling);
         }
+
+        private void OnDestroy()
+        {
+            if (_linkRoutine != null)
+                StopCoroutine(_linkRoutine);
+        }
         private void Update()
         {
             if (!IsPlaying)
