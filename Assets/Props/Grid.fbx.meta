@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 9e194a9e0c53e9641a5d7143d5ba10e5
+guid: 37b4316c3d321a74596e86940339aac7
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: MI_Grid
-    second: {fileID: 2100000, guid: f36d592279ea274459fbce9e213afddc, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
