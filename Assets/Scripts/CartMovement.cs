@@ -25,6 +25,7 @@ namespace GJgame
             transform.position = pos;
             transform.rotation = Quaternion.LookRotation(player.transform.forward);
             player.SetCurrentPickup(this);
+            JayAudioManager.Instance.GetCart();
         }
 
         public void DeatachCart()
@@ -33,6 +34,7 @@ namespace GJgame
             player.SetCartState(false);
             transform.SetParent(null);
             player.SetCurrentPickup(null);
+            JayAudioManager.Instance.DropCart();
         }
 
         public void Pickup()

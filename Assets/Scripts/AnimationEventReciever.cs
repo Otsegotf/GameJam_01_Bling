@@ -14,17 +14,21 @@ namespace GJgame
 
         public void Clear()
         {
-            StunFX.SetActive(false);
-            BashFX.SetActive(false);
+            if (StunFX != null)
+                StunFX.SetActive(false);
+            if (BashFX != null)
+                BashFX.SetActive(false);
         }
         public void StunStart()
         {
-            StunFX.SetActive(true);
+            if (StunFX != null)
+                StunFX.SetActive(true);
         }
 
         public void BashStart()
         {
-            BashFX.SetActive(true);
+            if (BashFX != null)
+                BashFX.SetActive(true);
         }
     }
 }

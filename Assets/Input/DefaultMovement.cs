@@ -225,6 +225,44 @@ namespace GJgame
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""UI"",
+            ""id"": ""af28ace1-140a-485e-a422-2540145026f6"",
+            ""actions"": [
+                {
+                    ""name"": ""ToggleMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""d82cc64d-a46a-4c98-8084-43215d918748"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""83e6716d-541b-45f1-a0ac-91a851b012b7"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Default"",
+                    ""action"": ""ToggleMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aa9eab84-9321-4a02-8a9f-08f3c8d6430b"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Default"",
+                    ""action"": ""ToggleMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -244,6 +282,9 @@ namespace GJgame
             m_Interactions = asset.FindActionMap("Interactions", throwIfNotFound: true);
             m_Interactions_Activate = m_Interactions.FindAction("Activate", throwIfNotFound: true);
             m_Interactions_Detach = m_Interactions.FindAction("Detach", throwIfNotFound: true);
+            // UI
+            m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+            m_UI_ToggleMenu = m_UI.FindAction("ToggleMenu", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -379,6 +420,39 @@ namespace GJgame
             }
         }
         public InteractionsActions @Interactions => new InteractionsActions(this);
+
+        // UI
+        private readonly InputActionMap m_UI;
+        private IUIActions m_UIActionsCallbackInterface;
+        private readonly InputAction m_UI_ToggleMenu;
+        public struct UIActions
+        {
+            private @DefaultMovement m_Wrapper;
+            public UIActions(@DefaultMovement wrapper) { m_Wrapper = wrapper; }
+            public InputAction @ToggleMenu => m_Wrapper.m_UI_ToggleMenu;
+            public InputActionMap Get() { return m_Wrapper.m_UI; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+            public void SetCallbacks(IUIActions instance)
+            {
+                if (m_Wrapper.m_UIActionsCallbackInterface != null)
+                {
+                    @ToggleMenu.started -= m_Wrapper.m_UIActionsCallbackInterface.OnToggleMenu;
+                    @ToggleMenu.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnToggleMenu;
+                    @ToggleMenu.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnToggleMenu;
+                }
+                m_Wrapper.m_UIActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @ToggleMenu.started += instance.OnToggleMenu;
+                    @ToggleMenu.performed += instance.OnToggleMenu;
+                    @ToggleMenu.canceled += instance.OnToggleMenu;
+                }
+            }
+        }
+        public UIActions @UI => new UIActions(this);
         private int m_DefaultSchemeIndex = -1;
         public InputControlScheme DefaultScheme
         {
@@ -398,6 +472,10 @@ namespace GJgame
         {
             void OnActivate(InputAction.CallbackContext context);
             void OnDetach(InputAction.CallbackContext context);
+        }
+        public interface IUIActions
+        {
+            void OnToggleMenu(InputAction.CallbackContext context);
         }
     }
 }

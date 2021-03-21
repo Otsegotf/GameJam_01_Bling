@@ -35,11 +35,19 @@ namespace GJgame
 
         public bool IsPlaying = false;
 
+        public BobAudioManager BobAudio;
+
         private void Awake()
         {
             Agent.autoTraverseOffMeshLink = false;
             _curStealCd = StealCD;
             SetState(BobState.Idling);
+        }
+
+        private void OnDestroy()
+        {
+            if (_linkRoutine != null)
+                StopCoroutine(_linkRoutine);
         }
         private void Update()
         {
@@ -58,7 +66,8 @@ namespace GJgame
             if(_curActionCd < 0 && CurrentState == BobState.Stealing)
             {
                 CurrentState = BobState.MissionFailedSuccesfuly;
-                GameManager.Instance.GameOver("BOB STOLE SOME STUFF, GAME OVER");
+                BobAudio.Stop();
+                GameManager.Instance.BobGameOver();
             }
             if (!Agent.enabled)
                 return;
@@ -86,6 +95,8 @@ namespace GJgame
 
         private void SetState(BobState newState)
         {
+            if (CurrentState == newState)
+                return;
             CurrentState = newState;
             switch (newState)
             {
@@ -104,18 +115,21 @@ namespace GJgame
                     Agent.enabled = true;
                     BobAnim.SetFloat(BlendParam, 1);
                     _curActionCd = 1f;
+                    BobAudio.SendStealWarning();
                     Repath(true);
                     break;
                 case BobState.Stealing:
                     Agent.enabled = false;
                     BobAnim.SetFloat(BlendParam, 2);
                     _curActionCd = StealTime;
+                    BobAudio.StartStealing();
                     break;
                 case BobState.Stunned:
                     Agent.enabled = false;
                     BobAnim.SetFloat(BlendParam, 3);
                     _curActionCd = StunTime;
                     _curStealCd = StealCD;
+                    BobAudio.Stop();
                     break;
                 default:
                     break;
@@ -166,7 +180,7 @@ namespace GJgame
         public void OnTriggerEnter(Collider other)
         {
             var player = other.GetComponentInParent<Movement>();
-            if (player)
+            if (player && CurrentState == BobState.Stealing)
             {
                 player.SetTrackedPickupable(this);
             }

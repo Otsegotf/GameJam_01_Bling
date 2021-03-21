@@ -13,9 +13,6 @@ namespace GJgame
 
         private InputAction _movementAction;
 
-        [SerializeField]
-        private DefaultMovement Controls;
-
         private Vector2 _oldInput;
 
         public Vector2 DirectionInput;
@@ -41,16 +38,26 @@ namespace GJgame
         public Transform ControlCamera;
 
         public float MaxPickupDistance = 1f;
+
+        private DefaultMovement _controls;
         // Start is called before the first frame update
         void Start()
         {
             _controller = GetComponent<CharacterController>();
-            Controls = new DefaultMovement();
-            Controls.Enable();
-            _movementAction = Controls.Movement.MoveDirection;
-            Controls.Interactions.Activate.performed += Activate_performed;
-            Controls.Interactions.Detach.performed += Detach_performed;
+            _controls = MainMenuManager.Instance.Controls;
+            _movementAction = _controls.Movement.MoveDirection;
+            _controls.Interactions.Activate.performed += Activate_performed;
+            _controls.Interactions.Detach.performed += Detach_performed;
             SetCartState(false);
+        }
+
+        private void OnDestroy()
+        {
+            if (_controls != null)
+            {
+                _controls.Interactions.Activate.performed -= Activate_performed;
+                _controls.Interactions.Detach.performed -= Detach_performed;
+            }
         }
 
         private void Detach_performed(InputAction.CallbackContext obj)
