@@ -80,14 +80,24 @@ namespace GJgame
             var collected = new List<IPickupAble>();
             for (int i = 0; i < objects.Length; i++)
             {
+                var isBasket = objects[i].GetComponentInParent<CartBasket>();
+                if (isBasket)
+                    continue;
                 var cart = objects[i].GetComponentInParent<CartMovement>();
-                if (cart && CarriedItem == null)
-                    _targetPickup = cart;
+                if (cart)
+                {
+                    if (Vector3.Angle(transform.forward, cart.transform.forward) < 90)
+                    {
+                        if (CarriedItem == null)
+                            _targetPickup = cart;
+                    }
+                }
                 var jay = objects[i].GetComponentInParent<JayAI>();
-                if(jay && !(_targetPickup is CartMovement))
+                if (jay && !(_targetPickup is CartMovement))
                 {
                     _targetPickup = jay;
                 }
+
 
             }
             if (_targetPickup != null)
