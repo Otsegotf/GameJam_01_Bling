@@ -196,7 +196,7 @@ namespace GJgame
             Jay.Agent.enabled = false;
             PlayerCamera.Follow = Jay.transform;
             PlayerCamera.LookAt = Jay.transform;
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(2f);
             MusicPlayer.Instance.Stop();
             var Jail = GameObject.Instantiate(JailPrefab, Jay.transform);
             yield return new WaitForSeconds(5f);
