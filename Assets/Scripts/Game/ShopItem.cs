@@ -9,6 +9,9 @@ namespace GJgame
         public int Size = 1;
 
         public ShopItemType ItemType;
+
+        public int SpriteId;
+        public string GetSpriteText => string.Format($"<sprite index={SpriteId}>");
     }
 
     [Flags]

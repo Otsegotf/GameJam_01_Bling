@@ -7,6 +7,8 @@ namespace GJgame
     {
         public Collider[] SpawnZones;
 
+        public AisleLabel[] Labels;
+
         public int Density = 5;
 
         [EnumFlag]
@@ -14,6 +16,10 @@ namespace GJgame
 
         public void FillAisle(ShopItem item)
         {
+            for (int i = 0; i < Labels.Length; i++)
+            {
+                Labels[i].SetItemLabel(item);
+            }
             for (int i = 0; i < SpawnZones.Length; i++)
             {
                 var zone = SpawnZones[i];
