@@ -255,8 +255,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1fc12343765f76940a14d88cfee44f57, type: 3}
   _currentPlayedClip: {fileID: 0}
   SirenClip: {fileID: 8300000, guid: 0d24a681393953e459c7eb9a36add4da, type: 3}
-  FailClip: {fileID: 0}
-  SuspenceClip: {fileID: 0}
+  FailClip: {fileID: 8300000, guid: 857cba1b83e0989478b56e71ba6ee54f, type: 3}
+  SuspenceClip: {fileID: 8300000, guid: d64a9119622948446a600a07bf78d52d, type: 3}
   Source: {fileID: 425658568}
 --- !u!4 &425658570
 Transform:
