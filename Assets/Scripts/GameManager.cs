@@ -204,7 +204,6 @@ namespace GJgame
                     yield break;
                 }
             }
-
             Win("YOU WON");
         }
 
@@ -244,7 +243,9 @@ namespace GJgame
         private void Win(string text)
         {
             Debug.Log(text);
-            StartCoroutine(RestartIn(5));
+            MusicPlayer.Instance.Stop();
+            MusicPlayer.Instance.PlayVictory();
+            StartCoroutine(RestartIn(2));
         }
 
         private IEnumerator RestartIn(float time)

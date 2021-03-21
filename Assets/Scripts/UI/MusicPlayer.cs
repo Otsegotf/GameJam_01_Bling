@@ -13,6 +13,8 @@ public class MusicPlayer : Singleton<MusicPlayer>
 
     public AudioClip FailClip;
 
+    public AudioClip VictoryClip;
+
     public AudioClip SuspenceClip;
 
     public AudioSource Source;
@@ -28,6 +30,11 @@ public class MusicPlayer : Singleton<MusicPlayer>
     {
         Source.clip = FailClip;
         Source.Play();
+    }
+
+    public void PlayVictory()
+    {
+        Source.PlayOneShot(VictoryClip);
     }
 
     public void PlaySuspence()
