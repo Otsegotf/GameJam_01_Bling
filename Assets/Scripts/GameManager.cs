@@ -194,6 +194,7 @@ namespace GJgame
                     GameOver(GameOverType.TooMuch);
                     yield break;
                 }
+                GameObject.Destroy(item.gameObject);
             }
             foreach (var item in neededItems)
             {
