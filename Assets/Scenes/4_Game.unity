@@ -964,6 +964,8 @@ MonoBehaviour:
   LabelLibrary: {fileID: 11400000, guid: e971c81022ff3b74da3b035b1c4b4449, type: 2}
   Difficulty: 1
   TriggerForEnd: {fileID: 1646771481}
+  LevelTime: 60
+  JailPrefab: {fileID: 323227637049114650, guid: c6d98e2bf3c375b4abbea0d1e76ae19b, type: 3}
 --- !u!114 &836291556
 MonoBehaviour:
   m_ObjectHideFlags: 0

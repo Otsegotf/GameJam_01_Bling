@@ -15,10 +15,16 @@ public class JayAudioManager : Singleton<JayAudioManager>
 
     public AudioClip EndTimerSound;
 
+    public AudioClip Ohoh;
+
     public AudioClip _currentPlayedClip;
 
     public AudioSource Source;
 
+    public void SendOhOh()
+    {
+        Source.PlayOneShot(Ohoh);
+    }
     public void PlayTimer()
     {
         Source.clip = EndTimerSound;

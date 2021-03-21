@@ -41,7 +41,7 @@ AudioSource:
   m_GameObject: {fileID: 1927183394614044147}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 5fcfeb73e6ba21d45afeb2fb5c909938, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -145,6 +145,7 @@ MonoBehaviour:
   GetCartSound: {fileID: 8300000, guid: 082162df8ff37b04babbc3223514edf4, type: 3}
   DropCartSound: {fileID: 8300000, guid: 982f2b139d978b84f86f94850bd90398, type: 3}
   EndTimerSound: {fileID: 8300000, guid: 99e0c42036aee8b4484fc66c8cee1cca, type: 3}
+  Ohoh: {fileID: 8300000, guid: 00c67f29827361145ac5e5c9689da58b, type: 3}
   _currentPlayedClip: {fileID: 0}
   Source: {fileID: 6332395395833460989}
 --- !u!1 &3821083487818655088
