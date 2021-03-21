@@ -9,8 +9,10 @@ public class MusicPlayer : Singleton<MusicPlayer>
 
     public AudioClip _currentPlayedClip;
 
+    public AudioClip SirenClip;
+
     public AudioSource Source;
-  public void Play()
+    public void Play()
     {
         if (Source.isPlaying)
             return;
@@ -18,6 +20,11 @@ public class MusicPlayer : Singleton<MusicPlayer>
         Source.Play();
     }
 
+    public void PlaySiren()
+    {
+        Source.clip = SirenClip;
+        Source.Play();
+    }
     public void Pause()
     {
         Source.Pause();

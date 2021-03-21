@@ -41,6 +41,11 @@ namespace GJgame
 
         public EndZoneTrigger TriggerForEnd;
 
+        public float LevelTime = 60;
+
+        public GameObject JailPrefab;
+
+        private Coroutine _gameTimerRoutine;
         public void Restart()
         {
             ItemLibrary.Init();
@@ -59,6 +64,21 @@ namespace GJgame
             Difficulty++;
             Debug.Log($"FOR SALE NOW {allowed}");
             StartCoroutine(StartGame());
+        }
+
+        public IEnumerator TimerRoutine()
+        {
+            while (LevelTime > 0f)
+            {
+                var newTime = LevelTime - Time.deltaTime;
+                if (LevelTime > 6f && newTime < 6f) 
+                {
+                    JayAudioManager.Instance.PlayTimer();
+                }
+                LevelTime = newTime;
+                yield return null;
+            }
+            GameOver("TIME OUT");
         }
         public IEnumerator StartGame()
         {
@@ -80,6 +100,7 @@ namespace GJgame
             Player.ControlCamera = PlayerCamera.transform;
             PlayerCamera.Follow = Player.transform;
             PlayerCamera.LookAt = Player.transform;
+            LevelTime = Difficulty * 30 + 15;
             BuyListManager.Instance.GenerateList(Difficulty * 2);
 
             Player.enabled = false;
@@ -93,6 +114,7 @@ namespace GJgame
             Player.enabled = true;
             Jay.IsPlaying = true;
             TriggerForEnd.gameObject.SetActive(true);
+            _gameTimerRoutine = StartCoroutine(TimerRoutine());
         }
 
         public AisleConstructor GetRandomAisle()
@@ -115,7 +137,14 @@ namespace GJgame
         public void BeginVictoryCheck()
         {
             TriggerForEnd.gameObject.SetActive(false);
+            StopCoroutine(_gameTimerRoutine);
+
             var currentItems = FindObjectOfType<CartBasket>().CartInventory;
+            if (Jay)
+                Jay.gameObject.SetActive(false);
+            if (Cart)
+                Cart.gameObject.SetActive(false);
+
             var neededItems = BuyListManager.Instance.CurrentList;
             while(currentItems.Count > 0)
             {
@@ -147,11 +176,37 @@ namespace GJgame
             Win("YOU WON");
         }
 
+        private Coroutine _gameOver;
+        public void BobGameOver(string text)
+        {
+            if(_gameOver == null)
+                _gameOver = StartCoroutine(BobGameOverRoutine(text));
+        }
+
+        private IEnumerator BobGameOverRoutine(string text)
+        {
+            StopCoroutine(_gameTimerRoutine);
+            TriggerForEnd.gameObject.SetActive(false);
+            Player.enabled = false;
+            JayAudioManager.Instance.Stop();
+            MusicPlayer.Instance.Stop();
+            JayAudioManager.Instance.SendOhOh();
+            yield return new WaitForSeconds(1f);
+            MusicPlayer.Instance.PlaySiren();
+            Jay.Agent.enabled = false;
+            PlayerCamera.Follow = Jay.transform;
+            PlayerCamera.LookAt = Jay.transform;
+            yield return new WaitForSeconds(2f);
+            MusicPlayer.Instance.Stop();
+            var Jail = GameObject.Instantiate(JailPrefab, Jay.transform);
+            yield return new WaitForSeconds(5f);
+            GameOver(text);
+        }
         public void GameOver(string text)
         {
-            Debug.Log(text);
-            Difficulty = 0;
-            StartCoroutine(RestartIn(5));
+            TriggerForEnd.gameObject.SetActive(false);
+            JayAudioManager.Instance.Stop();
+            MainMenuManager.Instance.GameOver(text);
         }
 
         private void Win(string text)

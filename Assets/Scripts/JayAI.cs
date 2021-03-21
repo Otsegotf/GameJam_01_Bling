@@ -66,7 +66,8 @@ namespace GJgame
             if(_curActionCd < 0 && CurrentState == BobState.Stealing)
             {
                 CurrentState = BobState.MissionFailedSuccesfuly;
-                GameManager.Instance.GameOver("BOB STOLE SOME STUFF, GAME OVER");
+                BobAudio.Stop();
+                GameManager.Instance.BobGameOver("BOB STOLE SOME STUFF, GAME OVER");
             }
             if (!Agent.enabled)
                 return;
@@ -179,7 +180,7 @@ namespace GJgame
         public void OnTriggerEnter(Collider other)
         {
             var player = other.GetComponentInParent<Movement>();
-            if (player)
+            if (player && CurrentState == BobState.Stealing)
             {
                 player.SetTrackedPickupable(this);
             }
