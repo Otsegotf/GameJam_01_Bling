@@ -26,7 +26,7 @@ namespace GJgame
             Debug.Log("[SHOPPING LIST] NEW LIST IS");
             foreach (var item in CurrentList)
             {
-                Debug.Log($"{item.Key} x {item.Value}");
+                Debug.Log($"{item.Key} x {item.Value.Count}");
             }
         }
     }

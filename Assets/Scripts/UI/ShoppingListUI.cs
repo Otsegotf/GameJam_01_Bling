@@ -12,7 +12,7 @@ public class ShoppingListUI : Singleton<ShoppingListUI>
 
     public void UpdateList()
     {
-        for (int i = 1; i < ListTransform.childCount; i++)
+        for (int i = 0; i < ListTransform.childCount; i++)
         {
             GameObject.Destroy(ListTransform.GetChild(i).gameObject);
         }
