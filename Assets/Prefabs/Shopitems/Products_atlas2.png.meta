@@ -74,6 +74,12 @@ TextureImporter:
   - first:
       213: 5144939960166475822
     second: Products_atlas2_23
+  - first:
+      213: -278055001692504720
+    second: Products_atlas2_24
+  - first:
+      213: -1090956698411491526
+    second: Products_atlas2_25
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -698,6 +704,48 @@ TextureImporter:
       bones: []
       spriteID: e286f6c72af766740800000000000000
       internalID: 5144939960166475822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Products_atlas2_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07df81cf276242cf0800000000000000
+      internalID: -278055001692504720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Products_atlas2_25
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3f99d5b9a42cd0f0800000000000000
+      internalID: -1090956698411491526
       vertices: []
       indices: 
       edges: []
