@@ -33,6 +33,10 @@ namespace GJgame
 
         public CinemachineVirtualCamera PlayerCamera;
 
+        public CinemachineVirtualCamera BobCamera;
+
+        public CinemachineVirtualCamera CashierCamera;
+
         public ShopItemLibrary ItemLibrary;
         
         public LabelLibrary LabelLibrary;
@@ -78,7 +82,7 @@ namespace GJgame
                 LevelTime = newTime;
                 yield return null;
             }
-            GameOver("TIME OUT");
+            GameOver(GameOverType.TimeOut);
         }
         public IEnumerator StartGame()
         {
@@ -100,8 +104,15 @@ namespace GJgame
             Player.ControlCamera = PlayerCamera.transform;
             PlayerCamera.Follow = Player.transform;
             PlayerCamera.LookAt = Player.transform;
+
+            BobCamera.Follow = Jay.transform;
+            BobCamera.LookAt = Jay.transform;
+
+
             LevelTime = Difficulty * 30 + 15;
             BuyListManager.Instance.GenerateList(Difficulty * 2);
+
+            ShoppingListUI.Instance.UpdateList();
 
             Player.enabled = false;
 
@@ -126,7 +137,7 @@ namespace GJgame
         {
             if(Player.CurrentPickup is CartMovement)
             {
-                BeginVictoryCheck();
+              StartCoroutine(BeginVictoryCheck());
             }
             else
             {
@@ -134,12 +145,22 @@ namespace GJgame
             }
         }
 
-        public void BeginVictoryCheck()
+        public Transform ItemStartPosition;
+
+        public Transform ItemEndPosition;
+
+        public float ItemMoveTime = 1;
+
+        public float CurrentItemPosition;
+        public IEnumerator BeginVictoryCheck()
         {
+            var currentItems = FindObjectOfType<CartBasket>().CartInventory;
             TriggerForEnd.gameObject.SetActive(false);
             StopCoroutine(_gameTimerRoutine);
+            CashierCamera.gameObject.SetActive(true);
+            Player.gameObject.SetActive(false);
+            yield return new WaitForSeconds(2f);
 
-            var currentItems = FindObjectOfType<CartBasket>().CartInventory;
             if (Jay)
                 Jay.gameObject.SetActive(false);
             if (Cart)
@@ -148,28 +169,36 @@ namespace GJgame
             var neededItems = BuyListManager.Instance.CurrentList;
             while(currentItems.Count > 0)
             {
+                CurrentItemPosition = 0;
                 var item = currentItems.Pop();
+                item.transform.SetParent(ItemStartPosition);
+                while(CurrentItemPosition < 1)
+                {
+                    CurrentItemPosition += Time.deltaTime / ItemMoveTime;
+                    item.transform.position = Vector3.Lerp(ItemStartPosition.position, ItemEndPosition.position, CurrentItemPosition);
+                    yield return null;
+                }
                 if (neededItems.TryGetValue(item.name, out var value))
                 {
-                    if (value <= 0)
+                    if (value.Count <= 0)
                     {
-                        GameOver("MORE ITEMS THAN NEEDED GAME OVER");
-                        return;
+                        GameOver(GameOverType.TooMuch);
+                        yield break;
                     }
-                    neededItems[item.name]--;
+                    neededItems[item.name].Count--;
                 }
                 else
                 {
-                    GameOver("ITEM NOT IN THE LIST. GAME OVER");                  
-                    return;
+                    GameOver(GameOverType.TooMuch);
+                    yield break;
                 }
             }
             foreach (var item in neededItems)
             {
-                if(item.Value > 0)
+                if(item.Value.Count > 0)
                 {
-                    GameOver("NOT ENOUGH ITEMS. GAME OVER");
-                    return;
+                    GameOver(GameOverType.TooLittle);
+                    yield break;
                 }
             }
 
@@ -177,13 +206,13 @@ namespace GJgame
         }
 
         private Coroutine _gameOver;
-        public void BobGameOver(string text)
+        public void BobGameOver()
         {
             if(_gameOver == null)
-                _gameOver = StartCoroutine(BobGameOverRoutine(text));
+                _gameOver = StartCoroutine(BobGameOverRoutine());
         }
 
-        private IEnumerator BobGameOverRoutine(string text)
+        private IEnumerator BobGameOverRoutine()
         {
             StopCoroutine(_gameTimerRoutine);
             TriggerForEnd.gameObject.SetActive(false);
@@ -194,19 +223,18 @@ namespace GJgame
             yield return new WaitForSeconds(1f);
             MusicPlayer.Instance.PlaySiren();
             Jay.Agent.enabled = false;
-            PlayerCamera.Follow = Jay.transform;
-            PlayerCamera.LookAt = Jay.transform;
+            BobCamera.gameObject.SetActive(true);
             yield return new WaitForSeconds(2f);
             MusicPlayer.Instance.Stop();
             var Jail = GameObject.Instantiate(JailPrefab, Jay.transform);
             yield return new WaitForSeconds(5f);
-            GameOver(text);
+            GameOver(GameOverType.BobFail);
         }
-        public void GameOver(string text)
+        public void GameOver(GameOverType type)
         {
             TriggerForEnd.gameObject.SetActive(false);
             JayAudioManager.Instance.Stop();
-            MainMenuManager.Instance.GameOver(text);
+            MainMenuManager.Instance.GameOver(type);
         }
 
         private void Win(string text)
@@ -220,5 +248,13 @@ namespace GJgame
             yield return new WaitForSeconds(time);
             Restart();
         }
+    }
+
+    public enum GameOverType
+    {
+        BobFail,
+        TimeOut,
+        TooMuch,
+        TooLittle
     }
 }

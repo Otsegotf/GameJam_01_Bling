@@ -13,7 +13,7 @@ public class MainMenuManager : Singleton<MainMenuManager>
 
     public int DifficultySetting = 0;
 
-    public string GameOverText;
+    public GameOverType GameOverType;
 
     public DefaultMovement Controls;
 
@@ -32,9 +32,9 @@ public class MainMenuManager : Singleton<MainMenuManager>
         StartCoroutine(MainSceneToPlaySceneTransition());
     }
 
-    public void GameOver(string text)
+    public void GameOver(GameOverType overType)
     {
-        GameOverText = text;
+        GameOverType = overType;
         StartCoroutine(PlaySceneToGameOverTransition());
     }
 
