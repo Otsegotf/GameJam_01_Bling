@@ -67,7 +67,7 @@ namespace GJgame
             {
                 CurrentState = BobState.MissionFailedSuccesfuly;
                 BobAudio.Stop();
-                GameManager.Instance.BobGameOver("BOB STOLE SOME STUFF, GAME OVER");
+                GameManager.Instance.BobGameOver();
             }
             if (!Agent.enabled)
                 return;
